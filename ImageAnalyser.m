@@ -22,7 +22,7 @@ function varargout = ImageAnalyser(varargin)
 
 % Edit the above text to modify the response to help ImageAnalyser
 
-% Last Modified by GUIDE v2.5 02-Aug-2016 16:58:16
+% Last Modified by GUIDE v2.5 09-Mar-2017 15:39:30
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -2326,15 +2326,18 @@ currentDay = num2str(day(date),'%02d');
 % Plot from current day or old saved data
 if plotstate == 1   % plots saved data
     
-    pathname = [storagePath '\' currentYear '\' currentMonth '\' currentDay];
-    directoryname = uigetdir(pathname);
+    handles.plotsaved = 1;
+    pathname = [storagePath filesep currentYear filesep currentMonth filesep currentDay];
+    [filename_plot_sp1,directoryname] = uigetfile([pathname filesep '*.asc']);
     set(handles.text_plotdate,'String',['Data from ' directoryname]);
-    rootPlot = [directoryname((end - 1):end) directoryname((end - 5):(end - 3))];
-    yearPlot = directoryname((end - 10):(end - 7));
-    save('maindata','rootPlot','yearPlot','-append');
+    rootPlot = filename_plot_sp1(8:12);
+    yearPlot = filename_plot_sp1(13:16);
+    filename_plot_sp2 = filename_plot_sp1;
+    save('maindata','rootPlot','yearPlot','filename_plot_sp1','filename_plot_sp2','-append');
     
 else
     
+    handles.plotsaved = 0;
     set(handles.text_plotdate,'String','Plot as you go!');
     
 end
@@ -2767,3 +2770,12 @@ function edit_label_sp2_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --------------------------------------------------------------------
+function menu_ploteverything_Callback(hObject, eventdata, handles)
+% hObject    handle to menu_ploteverything (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+ploteverything;
