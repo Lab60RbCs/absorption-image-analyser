@@ -111,9 +111,9 @@ function setstoragepath_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 if handles.OStype
-    handles.storagePath = uigetdir('\Windows Path\');
+    handles.storagePath = uigetdir('C:\');
 else
-    handles.storagePath = uigetdir('/home/ana/Work/Matlab stuff/');
+    handles.storagePath = uigetdir('/home/');
 end
 
 set(handles.viewstoragepath,'String',handles.storagePath);
@@ -130,9 +130,9 @@ function setimagepath_sp1_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 if handles.OStype
-    handles.imagePath_sp1 = uigetdir('\Windows Path\');
+    handles.imagePath_sp1 = uigetdir('C:\');
 else
-    handles.imagePath_sp1 = uigetdir('/home/ana/Work/Matlab stuff/');
+    handles.imagePath_sp1 = uigetdir('/home/');
 end
 
 set(handles.viewimagepath_sp1,'String',handles.imagePath_sp1);
@@ -152,9 +152,9 @@ function setlogpath_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 if handles.OStype
-    handles.logPath = uigetdir('\Windows Path\');
+    handles.logPath = uigetdir('C:\');
 else
-    handles.logPath = uigetdir('/home/ana/Work/Matlab stuff/');
+    handles.logPath = uigetdir('/home/');
 end
 
 set(handles.viewlogpath,'String',handles.logPath);
@@ -656,7 +656,7 @@ function pushbutton_loadvarfile_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % if handles.OStype
-%     handles.varPath = uigetdir('\Windows Path\');
+%     handles.varPath = uigetdir('C:\');
 % else
 %     handles.varPath = uigetdir('/home/ana/Work/Matlab stuff/');
 % end
@@ -770,7 +770,7 @@ function pushbutton_dexterpath_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-[dexterSyncFile dexterSyncPath] = uigetfile('*.txt','\Windows Path\');
+[dexterSyncFile dexterSyncPath] = uigetfile('*.txt','C:\');
 handles.dexterSyncPath = dexterSyncPath;
 
 set(handles.viewdexterpath,'String',handles.dexterSyncPath);
@@ -941,7 +941,7 @@ function setimagepath_sp2_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 if handles.OStype
-    handles.imagePath_sp2 = uigetdir('\Windows Path\');
+    handles.imagePath_sp2 = uigetdir('C:\');
 else
     handles.imagePath_sp2 = uigetdir('/home/ana/Work/Matlab stuff/');
 end

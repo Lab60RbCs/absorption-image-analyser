@@ -17,10 +17,10 @@ currentDay = num2str(day(date),'%02d');
 
 if windows
     pathname_olddata = [storagePath '\' currentYear '\' currentMonth '\'];
-    [filename_sp1,pathname_olddata] = uigetfile([pathname_olddata '\*.asc']);
+    [filename_sp1,pathname_olddata] = uigetfile([pathname_olddata '\*.asc'],'Open old Data File',strcat(storagePath,'\a',element_sp1,'*'));
 else
     pathname_olddata = [storagePath '/' currentYear '/' currentMonth '/'];
-    [filename_sp1,pathname_olddata] = uigetfile([pathname_olddata '/*.asc']);
+    [filename_sp1,pathname_olddata] = uigetfile([pathname_olddata '/*.asc'],'Open old Data File','C:\Experimental_Results\Results\a*');
 end
 
 save('maindata','pathname_olddata','filename_sp1','-append');
